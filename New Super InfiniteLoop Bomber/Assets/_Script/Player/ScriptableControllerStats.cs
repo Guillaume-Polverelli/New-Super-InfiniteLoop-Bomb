@@ -57,7 +57,10 @@ namespace Controller
         [Tooltip("The amount of time we buffer a jump. This allows jump input before actually hitting the ground")]
         public float JumpBuffer = .2f;
 
-        [Tooltip("Instant vertical speed reduction for more accurate little jumps")]
-        public float JumpCutMultiplier = .5f;
+        [Header("Jump Apex")]
+        public float ApexThreshold = 0.1f;
+        public float ApexGravityMultiplier = 0.5f;
+
+
     }
 }

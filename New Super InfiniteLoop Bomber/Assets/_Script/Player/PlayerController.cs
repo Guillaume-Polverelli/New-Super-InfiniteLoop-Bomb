@@ -184,6 +184,15 @@ namespace Controller
             else
             {
                 var inAirGravity = _stats.FallAcceleration;
+
+                // Apex Hang Time
+                float apexPoint = Mathf.Abs(_frameVelocity.y) / _stats.JumpPower;
+
+                if (apexPoint < _stats.ApexThreshold)
+                {
+                    inAirGravity *= _stats.ApexGravityMultiplier;
+                }
+
                 if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
