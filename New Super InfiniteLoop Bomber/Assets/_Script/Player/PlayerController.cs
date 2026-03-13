@@ -6,6 +6,9 @@ namespace Controller
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
+
+        #region Variables
+
         [SerializeField] private ScriptableControllerStats _stats;
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
@@ -23,6 +26,8 @@ namespace Controller
         #endregion
 
         private float _time;
+
+        #endregion
 
         private void Awake()
         {
