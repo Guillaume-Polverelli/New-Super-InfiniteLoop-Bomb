@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private PlayerState _player;
+    private PlayerState _player;
 
 
     public static void RegisterPlayer(PlayerState player)
