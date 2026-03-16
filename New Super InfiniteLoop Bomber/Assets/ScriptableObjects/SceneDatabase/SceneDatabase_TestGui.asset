@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f2bbb8818e3994497e3db2e6233e64, type: 3}
-  m_Name: SceneDatabase_Main
+  m_Name: SceneDatabase_TestGui
   m_EditorClassIdentifier: Assembly-CSharp::SceneDatabase
   bootstrapScene:
     sceneName: Scenes/Test_Gui/Gui_BootstrapScene
