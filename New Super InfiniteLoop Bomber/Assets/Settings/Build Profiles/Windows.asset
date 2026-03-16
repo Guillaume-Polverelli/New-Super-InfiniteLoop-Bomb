@@ -24,6 +24,10 @@ MonoBehaviour:
     m_path: Assets/Scenes/TestScenes_Gui/Gui_BootstrapScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/TestScenes_Gui/Level_01.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/TestScenes_Matth/Matth_BootStrap.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/TestScenes_Matth/Matth_Level01.unity
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
