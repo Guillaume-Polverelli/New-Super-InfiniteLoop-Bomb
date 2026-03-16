@@ -12,6 +12,7 @@ public class PlayerState : MonoBehaviour
     }
     void Die()
     {
+        gameObject.SetActive(false);
         OnPlayerDeath?.Invoke();
     }
     private void OnTriggerEnter2D(Collider2D collision)
