@@ -10,12 +10,15 @@ namespace Controller
         #region Variables
 
         [SerializeField] private ScriptableControllerStats _stats;
+        [SerializeField] private Transform _sprite;
+        [SerializeField] private Animator _anim;
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
         private InputSystem_Actions _inputActions;
+        private bool _facingRight = true;
 
         #region Interface
 
@@ -86,6 +89,40 @@ namespace Controller
             HandleGravity();
 
             ApplyMovement();
+
+            HandleFlip();
+
+            UpdateAnimations();
+        }
+
+        private void UpdateAnimations()
+        {
+            _anim.SetFloat("Speed", Mathf.Abs(_rb.linearVelocity.x));
+            _anim.SetBool("IsGrounded", _grounded);
+            _anim.SetFloat("YVelocity", _rb.linearVelocity.y);
+        }
+
+        private void HandleFlip()
+        {
+            float moveX = _frameInput.Move.x;
+
+            if (moveX > .1f && !_facingRight)
+            {
+                Flip();
+            }
+            else if (moveX < -.1f && _facingRight)
+            {
+                Flip();
+            }
+        }
+
+        private void Flip()
+        {
+            _facingRight = !_facingRight;
+
+            Vector3 scale = _sprite.localScale;
+            scale.x *= -1;
+            _sprite.localScale = scale;
         }
 
         #region Collisions
