@@ -1,24 +1,46 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
-public class coins : MonoBehaviour
+public class Coins : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator _animator;
+    private Collider2D _collider;
+
+    private bool _collected;
+
+
+    void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerState>() != null) 
-        { 
-            Destroy(gameObject);
-        }
+        if (_collected) return;
+
+        if (!collision.TryGetComponent<IItemReceiver>(out var receiver))
+            return;
+
+        _collected = true;
+
+        receiver.OnCollect();
+
+        StartCoroutine(CollectRoutine());
+    }
+
+    private IEnumerator CollectRoutine()
+    {
+        // Deactivate collision
+        _collider.enabled = false;
+
+        // Play animation
+        _animator.SetTrigger("Collected");
+
+        // Wait for the anim to end
+        yield return new WaitForSeconds(.5f);
+
+        // Destroy object
+        Destroy(gameObject);
     }
 }

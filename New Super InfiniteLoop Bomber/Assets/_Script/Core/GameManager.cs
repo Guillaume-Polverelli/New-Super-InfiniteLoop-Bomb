@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,7 +56,8 @@ public class GameManager : MonoBehaviour
     //Called when player dies
     void HandlePlayerDeath()
     {
-        Invoke(nameof(ReloadCurrentLevel), 1f); // respawn after 1 sec
+        // Respawn after 1 sec
+        Invoke(nameof(ReloadCurrentLevel), 1f);
     }
     void RegisterPlayerInternal(PlayerState player)
     {
